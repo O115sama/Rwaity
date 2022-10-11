@@ -6,9 +6,10 @@
 
 <footer class="blog-footer">
     <!-- Copyright -->
-    <div class="text-center p-3" ">
-    © <?php echo date('Y')?> Copyright
-    <span>Rewity Store</span>
+    <div class="text-center p-3">
+    جميع الحقوق محفوظة لموقع
+    <span><?php echo $config['app_name']?></span>
+    © <?php echo date('Y')?>
     </div>
     <!-- Copyright -->
 </footer>
@@ -16,5 +17,5 @@
 </html>
 
 <?php
-
+exit();
 ob_end_flush();
