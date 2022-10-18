@@ -8,7 +8,7 @@ if (isset($_SESSION['id'])){
 ?>
 <div class="d-flex align-items-center justify-content-center" style="padding-top:5%">
     <form class="form-signin text-center" action="" method="post">
-        <img class="mb-4" src="/rewity/template/logo.png" width="72" height="72">
+        <img class="mb-4" src="/template/logo.png" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">تسجيل حساب جديد</h1>
         <div>
             <input type="text" name="name" id="name" class="form-control" placeholder="ادخل الاسم" required>

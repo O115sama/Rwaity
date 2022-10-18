@@ -4,7 +4,7 @@
 <?php include "../template/header.php"; ?>
 <?php include "../db.php"; ?>
 <?php
-if ($_SESSION['id'] and !$_SESSION['role']){
+if (!$_SESSION['role']){
     header('location:../index.php');
     exit();
 }

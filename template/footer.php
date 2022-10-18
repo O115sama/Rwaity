@@ -8,7 +8,7 @@
     <!-- Copyright -->
     <div class="text-center p-3">
     جميع الحقوق محفوظة لموقع
-    <span><?php echo $config['app_name']?></span>
+    <span>روايتي</span>
     © <?php echo date('Y')?>
     </div>
     <!-- Copyright -->

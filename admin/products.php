@@ -4,7 +4,7 @@
 <?php include "../template/header.php"; ?>
 <?php include "../db.php"; ?>
 <?php
-if (!$_SESSION['id'] and !$_SESSION['role']){
+if (!$_SESSION['role']){
     header('location:../index.php');
     exit();
 }
@@ -28,7 +28,7 @@ if (!$_SESSION['id'] and !$_SESSION['role']){
                     <th scope="row"><?php echo $product['name']?></th>
                     <th scope="row"><?php echo $product['subject']?></th>
                     <th scope="row"><?php echo $product['author']?></th>
-                    <th scope="row"><?php echo mb_strimwidth($product['description'], 0, 100)?></th>
+                    <th scope="row"><?php echo mb_strimwidth($product['description'] , '0','80')?></th>
                     <th scope="row"><?php echo $product['price']?></th>
                     <th scope="row">
                         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
@@ -53,7 +53,7 @@ if (!$_SESSION['id'] and !$_SESSION['role']){
 if (isset($_POST['allowed'])){
     $query = 'UPDATE `products` SET `status` = 1 WHERE `products`.`id` ='.$_POST['allowed'];
 }else{
-    $query = 'UPDATE `products` SET `status` = 0 WHERE `products`.`id` ='.isset($_POST['blocked']);
+    $query = 'UPDATE `products` SET `status` = 0 WHERE `products`.`id` ='.$_POST['blocked'];
 }
 if ($conn->query($query)){
     header("Refresh:0");

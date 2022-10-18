@@ -4,7 +4,7 @@ $title = "الطلبات"
 <?php include "../template/header.php"; ?>
 <?php include "../db.php"; ?>
 <?php
-if ($_SESSION['id'] and !$_SESSION['role']){
+if (!$_SESSION['role']){
     header('location:../index.php');
     exit();
 }
@@ -52,7 +52,7 @@ if ($_SESSION['id'] and !$_SESSION['role']){
 if (isset($_POST['allowed'])){
     $query = 'UPDATE `orders` SET `status` = 1 WHERE `orders`.`id` ='.$_POST['allowed'];
 }else{
-    $query = 'UPDATE `orders` SET `status` = 0 WHERE `orders`.`id` ='.isset($_POST['blocked']);
+    $query = 'UPDATE `orders` SET `status` = 0 WHERE `orders`.`id` ='.$_POST['blocked'];
 }
 
 if ($conn->query($query)){

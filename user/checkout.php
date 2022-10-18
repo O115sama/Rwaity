@@ -1,11 +1,28 @@
 <?php
-$title = "checkout"
+$title = "السلة"
 ?>
 <?php include "../template/header.php"; ?>
 <?php include "../db.php"; ?>
 
+<?php
+if (!$_SESSION['id']){
+    header('location:../index.php');
+    exit();
+}
+?>
+    
     <div class="container">
+
+    <?php 
+    $cart = mysqli_query($conn, 'SELECT * FROM `cart` WHERE id_buyer = '.$_SESSION['id']);
+    if(!mysqli_num_rows($cart)){ ?>
         <div class="py-5 text-center">
+            <h2>السلة فارغة</h2>
+        </div>
+    <?php
+    }else{ ?>
+    
+    <div class="py-5 text-center">
             <h2>انهاء الطلب</h2>
         </div>
         <div class="row py-5">
@@ -71,6 +88,9 @@ $title = "checkout"
                 </form>
             </div>
         </div>
+    <?php
+    } ?>
+
         <?php
 
 

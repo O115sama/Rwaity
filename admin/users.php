@@ -5,7 +5,7 @@
 <?php include "../db.php"; ?>
 
 <?php
-if (!$_SESSION['id'] and $_SESSION['role']){
+if (!$_SESSION['role']){
     header('location:../index.php');
     exit();
 }
@@ -42,7 +42,7 @@ if (!$_SESSION['id'] and $_SESSION['role']){
                         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
                         <?php
                         if(!$user['status']){ ?>
-                            <button type="submit" name="allowed" value="<?php echo  $user['id']?>" class="btn btn-secondary">نشط</button>
+                            <button type="submit" name="allowed" value="<?php echo  $user['id']?>" class="btn btn-secondary">غير نشط</button>
                             <?php
                         }else{ ?>
                             <button type="submit" name="blocked" value="<?php echo  $user['id']?>" class="btn btn-success">نشط</button>
@@ -60,7 +60,7 @@ if (!$_SESSION['id'] and $_SESSION['role']){
 if (isset($_POST['allowed'])){
     $query = 'UPDATE `users` SET `status` = 1 WHERE `users`.`id` = ' .$_POST['allowed'];
 }else{
-    $query = 'UPDATE `users` SET `status` = 0 WHERE `users`.`id` = ' .isset($_POST['blocked']);
+    $query = 'UPDATE `users` SET `status` = 0 WHERE `users`.`id` = ' .$_POST['blocked'];
 }
 if ($conn->query($query)){
     header("Refresh:0");

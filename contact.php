@@ -1,11 +1,11 @@
-<?php $title = "Contact Us" ?>
+<?php $title = "اتصل بنا" ?>
 <?php include "template/header.php"?>
 <?php include "db.php"?>
 
 <div class="d-flex align-items-center justify-content-center" style="padding-top:12%">
     <form class="form-signin text-center" action="" method="post">
-        <img class="mb-4" src="/rewity/template/logo.png" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Contact Us</h1>
+        <img class="mb-4" src="/template/logo.png" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">اتصل بنا</h1>
         <div>
             <input type="text" name="name" id="name" class="form-control" placeholder="ادخل الاسم" required>
         </div>

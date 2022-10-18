@@ -1,9 +1,8 @@
 <?php
-    $title = "Home"
+    $title = "الرئيسية"
 ?>
 <?php include "template/header.php"; ?>
 <?php include "db.php"?>
-<?php include "config.php"?>
     <div class="py-5">
         <div class="container">
             <!-- Search -->
@@ -21,10 +20,10 @@
                 <div class="" role="group" aria-label="Basic example" >
                     <form action="" method="get">
                     <?php foreach ($conn->query('SELECT * FROM `category`') as $category) { ?>
-                        <button type="submit" name="category" value="<?php echo $category['id']?>" class="btn btn-outline-dark"><?php echo $category['name']?></button>
+                        <button type="submit" name="category" value="<?php echo $category['id']?>" class="btn btn-outline-dark m-1"><?php echo $category['name']?></button>
                         <?php
                      } ?>
-                        <button type="submit" name="category" value="0" class="btn btn-outline-dark">عرض الكل</button>
+                        <button type="submit" name="category" value="0" class="btn btn-outline-dark m-1">عرض الكل</button>
                     </form>
                 </div>
             </div>
@@ -49,24 +48,15 @@
                                 <small class="card-text">السعر <b><?php echo $product['price']?></b></small><br>
                                 <small class="card-text text-justify"><?php echo mb_strimwidth($product['description'], 0, 100, "...")?></small>
                                 <div class="text-center">
-                                    <form action="" method="post">
-                                    <div class="btn-group text-center pt-3">
-                                            <?php
-                                        if(isset($_SESSION['id']) and $product['id_user'] == $_SESSION['id']){ ?>
-                                            <!-- owner -->
-                                                <button type="submit"  disabled class="btn btn-sm btn-block btn-outline-secondary ">انت المالك</button>
-                                            <?php
-                                        }elseif(isset($_SESSION['id'])){ ?>
-                                            <!-- auth -->
-                                                <button type="submit" name="id_product" value="<?php echo $product['id'] ?>"  class="btn btn-sm btn-block btn-secondary ">اضف للسلة</button>
-                                        <?php }else{ ?>
-                                            <!-- gist -->
-                                                <a href="/rewity/auth/login.php" >
-                                                    <button type="button" class="btn btn-sm btn-block btn-secondary ">تسجيل دخول</button>
-                                                </a>
+                                    <?php if(!$_SESSION['role']){ ?>
+
+                                        <form action="user/show.php" method="post">
+                                        <div class="btn-group text-center pt-3">
+                                        <button type="submit" name="id_product" value="<?php echo $product['id'] ?>"  class="btn btn-sm btn-block btn-secondary ">عرض المنتج</button>
+                                        </div>
+                                        </form>
                                         <?php } ?>
-                                    </div>
-                                    </form>
+
                                 </div>
                             </div>
                         </div>
@@ -78,15 +68,4 @@
 
 
 
-
-<?php
-if (isset($_POST['id_product'])){
-    $id_puyer = $_SESSION['id'] ;
-    $id_product = $_POST['id_product'] ;
-
-    $query = "INSERT INTO `cart` (`id`, `id_buyer`, `id_product`) VALUES (NULL, '$id_puyer', '$id_product');";
-    if ($conn->query($query)){
-    }
-}
-?>
 <?php include "template/footer.php"; ?>

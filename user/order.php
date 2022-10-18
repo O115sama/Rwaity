@@ -1,8 +1,16 @@
 <?php
-    $title = "user"
+    $title = "الطلبات"
 ?>
 <?php include "../template/header.php"; ?>
 <?php include "../db.php"; ?>
+
+<?php
+if (!$_SESSION['id']){
+    header('location:../index.php');
+    exit();
+}
+?>
+
 <div class="container text-center py-5">
     <table class="table table-sm ">
         <h3>المشتريات</h3>

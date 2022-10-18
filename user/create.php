@@ -2,9 +2,16 @@
 <?php include "../template/header.php"?>
 <?php include "../db.php"?>
 
+<?php
+if (!$_SESSION['id']){
+    header('location:../index.php');
+    exit();
+}
+?>
+
 <div class="d-flex align-items-center justify-content-center" style="padding-top:10%">
     <form class="form-signin text-center" action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
-        <img class="mb-4" src="/rewity/template/logo.png" width="72" height="72">
+        <img class="mb-4" src="/template/logo.png" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">انشاء منتج</h1>
         <div>
             <input type="text" name="subject" id="subject" class="form-control" placeholder="ادخل العنوان" required>

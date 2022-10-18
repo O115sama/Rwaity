@@ -1,11 +1,11 @@
 <?php
-$title = "admin"
+$title = "لوحة التحكم"
 ?>
 <?php include "../template/header.php"; ?>
 <?php include "../db.php" ?>
 
 <?php
-if (!$_SESSION['id'] and !$_SESSION['role']){
+if (!$_SESSION['role']){
     header('location:../index.php');
     exit();
 }
@@ -102,6 +102,7 @@ $result_sales = mysqli_fetch_assoc($sales);
                     <th scope="row"><?php echo $order['Owner']?></th>
                     <th scope="row"><?php echo $order['Buyer']?></th>
                     <th scope="row">
+                        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
                             <?php
 
                             if(!$order['Status']){ ?>
@@ -112,6 +113,7 @@ $result_sales = mysqli_fetch_assoc($sales);
                                 <span>مكتمل</span>
                             <?php }
                             ?>
+                        </form>
                     </th>
                 </tr>
                 <?php
